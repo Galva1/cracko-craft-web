@@ -10,10 +10,11 @@ export async function GET(request: Request) {
     }
     
     try {
-        const response = await fetch(`https://minecraft-api.com/api/uuid/${username}/json`);
+        const response = await fetch(`https://api.mojang.com/users/profiles/minecraft/${username}`);
         const data = await response.json();
-
-        return NextResponse.json(data);
+        const name = data.name;
+        const uuid = data.id;
+        return NextResponse.json({ uuid, name });
     } catch (error) {
         return NextResponse.json({ error: 'Erro ao buscar UUID' }, { status: 500 });
     }

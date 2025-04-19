@@ -5,6 +5,7 @@ export default function jogadores() {
 
     const [nomeJogador, setNomeJogador] = useState('');
     const [uuid, setUuid] = useState('');
+    const [name, setName] = useState('');
     const [erro, setErro] = useState('');
 
     const buscarSkin = async () => {
@@ -19,7 +20,9 @@ export default function jogadores() {
             if (!response.ok) throw new Error('Erro ao buscar UUID');
     
             const data = await response.json();
+            console.log(data);
             setUuid(data.uuid);
+            setName(data.name);
             setErro('');
         } catch (err) {
             console.error(err);
@@ -38,16 +41,25 @@ export default function jogadores() {
                 placeholder="Digite o nome do jogador"
                 value={nomeJogador}
                 onChange={(event) => setNomeJogador(event.target.value)}
+                onKeyDown={(event) => {
+                        if (event.key === 'Enter') {
+                            buscarSkin();
+                        }
+                    }
+                }   
             />
             
             {erro && <p className="text-red-500 mt-4">{erro}</p>}
 
             <button
                 onClick={buscarSkin}
+                disabled={!nomeJogador}
                 className="mt-4 bg-blue-500 text-white px-4 py-2 rounded-lg"
             >
                 Buscar Skin
             </button>
+
+            {uuid && <p className="text-neutral-950 font-bold mt-4">{name}</p>}
 
             <div className='flex mt-6'>
                 {uuid && (
