@@ -1,5 +1,5 @@
 export default function Sobre(){
     return(
-        <div>Página sobre o servidor</div>
+        <div className="tela-container">Página sobre o servidor</div>
     );
 }

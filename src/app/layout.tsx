@@ -1,5 +1,6 @@
 import "./globals.css";
 import { Header } from "./components/header";
+import { Footer } from "./components/footer/page";
 
 export default function RootLayout({
   children,
@@ -7,10 +8,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`antialiased`}>
+    <html lang="en" className="h-full">
+      <body className="h-full flex flex-col antialiased">
         <Header />
-        {children}
+        <main className="flex-grow flex flex-col">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );
