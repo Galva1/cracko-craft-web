@@ -36,7 +36,7 @@ export default function jogadores() {
             <h1 className="text-3xl font-bold mb-4">Jogadores</h1>
             <p className="text-lg">Busque sua skin</p>
             <input
-                className="border border-gray-300 rounded-lg p-2 mt-4"
+                className="border border-gray-300 bg-white rounded-lg p-2 mt-4"
                 type="text"
                 placeholder="Digite o nome do jogador"
                 value={nomeJogador}
