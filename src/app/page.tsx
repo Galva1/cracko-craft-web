@@ -1,29 +1,18 @@
 'use client';
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 
 export default function Home() {
 
   const [theme, setTheme] = useState('day');
 
   const toggleTheme = () => {
-    toggleColorFont();
     setTheme((theme) => (theme === 'day' ? 'night' : 'day'));
   };
 
-  const toggleColorFont = () => {
-    const body = document.body;
-    if (theme === 'day') {
-      body.classList.remove('bg-gray-100');
-      body.classList.add('bg-gray-900');
-      body.classList.remove('text-black');
-      body.classList.add('text-white');
-    } else {
-      body.classList.remove('bg-gray-900');
-      body.classList.add('bg-gray-100');
-      body.classList.remove('text-white');
-      body.classList.add('text-black');
-    }
+  const fontStyle = {
+    fontFamily: 'Arial, sans-serif',
+    color: theme === 'day' ? 'black' : 'white',
   }
 
   const buttonStyle = {
@@ -38,7 +27,7 @@ export default function Home() {
   };
 
   const backgroundImageStyle = {
-    backgroundImage: `url(/${theme}wallpaper.jpg)`,
+    backgroundImage: `url(/${theme}wallpaper.png)`,
     backgroundSize: 'cover',
     backgroundRepet: 'no-repeat',
     minHeight: '90vh',
@@ -50,7 +39,7 @@ export default function Home() {
         Mudar para {theme === 'day' ? 'Noite' : 'Dia'}
       </button>
       <main className="flex flex-col items-center justify-between p-24 tela-container">
-        <h1 className="text-3xl font-bold">Seja bem vindo ao site oficial do CrackoCraft</h1>
+        <h1 className="text-3xl font-bold" style={fontStyle}>Seja bem vindo ao site oficial do CrackoCraft</h1>
       </main>
     </div>
   );

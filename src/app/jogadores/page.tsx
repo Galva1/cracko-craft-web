@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 
+
 export default function jogadores() {
 
     const [nomeJogador, setNomeJogador] = useState('');
