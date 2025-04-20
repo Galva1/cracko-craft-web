@@ -22,7 +22,7 @@ export default function Sobre(){
     const titulo5Ref = useRef(null);
     const titulo6Ref = useRef(null);
 
-    const handleClickTitulo = (ref) => {
+    const handleClickTitulo = (ref: React.RefObject<HTMLHeadingElement>) => {
         ref.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
