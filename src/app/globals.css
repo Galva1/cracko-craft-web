@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+.day{
+  background-color: #FFCCF6;
+}
+.night{
+  background-color: #9A0E79;
+}
+
 html, body {
   height: 100%;
   margin: 0;
