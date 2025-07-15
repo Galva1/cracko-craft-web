@@ -1,59 +1,110 @@
-import { ThemeContext } from '@/app/api/provider/theme-provider';
-import Link from 'next/link';
-import React, { useContext } from 'react';
-import { Button } from './button';
-import Image from 'next/image';
+import { ThemeContext } from "@/app/api/provider/theme-provider";
+import Link from "next/link";
+import React, { useContext, useState } from "react";
+import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars,  faSun , faMoon} from "@fortawesome/free-solid-svg-icons";
 
-const sol = <svg
-xmlns="http://www.w3.org/2000/svg"
-width="1em"
-height="1em"
-viewBox="0 0 24 24"
-fill="none"
-stroke="currentColor"
-stroke-width="2"
-stroke-linecap="round"
-stroke-linejoin="round"
->
-<circle cx="12" cy="12" r="5" />
-<line x1="12" y1="1" x2="12" y2="3" />
-<line x1="12" y1="21" x2="12" y2="23" />
-<line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-<line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-<line x1="1" y1="12" x2="3" y2="12" />
-<line x1="21" y1="12" x2="23" y2="12" />
-<line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-<line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-</svg>
+export function Header() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const [menubar, toggleMenuBar] = useState(false);
 
-const lua = <svg
-xmlns="http://www.w3.org/2000/svg"
-width="1em"
-height="1em"
-viewBox="0 0 24 24"
-fill="currentColor"
->
-<path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z" />
-</svg>
+  const handleMenu = () => {
+    toggleMenuBar((prev) => !prev);
+  };
 
+  return (
+<header className="w-full border-b-2 z-50 fixed bg-white text-gray-900">
+      <div className="flex justify-between items-center px-4 py-2">
+        {/* Logo */}
+        <Link href="/" className="block">
+          <Image
+            src="/images/logo.png"
+            width={150}
+            height={65}
+            alt="Cracko Craft"
+          />
+        </Link>
 
+        <div className="flex items-center gap-4">
+          {/* Toggle theme */}
+          <button
+            onClick={toggleTheme}
+            className="text-2xl hover:text-orange-500"
+          >
+            {theme === "day" ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}
+          </button>
 
-export function Header(){
+          {/* Desktop Menu */}
+          <nav className="hidden md:block">
+            <ul className="flex">
+              <li>
+                <Link
+                  href="#news"
+                  className="block px-6 py-4 border-r border-gray-200 hover:bg-gray-100"
+                >
+                  News
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#contact"
+                  className="block px-6 py-4 border-r border-gray-200 hover:bg-gray-100"
+                >
+                  Contact
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="#about"
+                  className="block px-6 py-4 hover:bg-gray-100"
+                >
+                  About
+                </Link>
+              </li>
+            </ul>
+          </nav>
 
-    const {theme,toggleTheme} = useContext(ThemeContext);
+          {/* Mobile Menu Icon */}
+          <button
+            className="md:hidden text-xl"
+            onClick={handleMenu}
+          >
+            <FontAwesomeIcon icon={faBars} />
+          </button>
+        </div>
+      </div>
 
-    return (
-        <header className={theme === 'day' ? "day flex items-center justify-between p-4 text-white" : "night flex items-center justify-between p-4 text-white "} >
-            <Link href='/'><Image src="/images/logo.png"  width={200} height={100} alt='Cracko Craft'></Image></Link>
-            <nav>
-                
-                <ul className="flex space-x-4">
-                    <button onClick={toggleTheme} className='hover:text-gray-400 px-5 py-2 text-base font-bold bg-[#FFA3EC] rounded border-none cursor-pointer'>{theme === 'day' ? sol : lua}</button>
-                    <li><Button><Link href='/' className='hover:text-gray-400'>Home</Link></Button></li>
-                    <li><Button><Link href='/sobre' className='hover:text-gray-400'>Sobre</Link></Button></li>
-                    <li><Button><Link href='/jogadores' className='hover:text-gray-400'>Jogadores</Link></Button></li>
-                </ul>
-            </nav>
-        </header>
-    );
+      {/* Mobile Menu */}
+      <nav className={`${menubar ? "block" : "hidden"} md:hidden bg-white border-t border-gray-200 px-4`}> 
+        <ul className="flex flex-col">
+          <li>
+            <Link
+              href="#news"
+              className="block px-6 py-4 border-b border-gray-200 hover:bg-gray-100"
+            >
+              News
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="#contact"
+              className="block px-6 py-4 border-b border-gray-200 hover:bg-gray-100"
+            >
+              Contact
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="#about"
+              className="block px-6 py-4 hover:bg-gray-100"
+            >
+              About
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  );
 }
+
