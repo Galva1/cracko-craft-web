@@ -1,29 +1,46 @@
-'use client';
+"use client";
 
-import React, { createContext, useState } from 'react';
+import React, { createContext, useEffect, useState } from "react";
+
+type Theme = "light" | "dark";
 
 type ThemeContextType = {
-  theme: 'day' | 'night';
+  theme: "light" | "dark";
   toggleTheme: () => void;
 };
 
-
 // Valor padrão só para tipagem inicial
 export const ThemeContext = createContext<ThemeContextType>({
-  theme: 'day',
+  theme: "light",
   toggleTheme: () => {},
 });
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const [theme, setTheme] = useState<'day' | 'night'>(
-  typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'night'
-    : 'day'
-);
+  const [theme, setTheme] = useState<Theme>("light");
 
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme") as Theme | null;
+
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      const systemPrefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      setTheme(systemPrefersDark ? "dark" : "light");
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    document.documentElement.classList.remove("light", "dark");
+    document.documentElement.classList.add(theme);
+  }, [theme]);
+
+  
 
   const toggleTheme = () => {
-    setTheme(prev => (prev === 'day' ? 'night' : 'day'));
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (

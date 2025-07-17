@@ -22,7 +22,7 @@ export default function Home() {
           <div className="w-full h-full bg-ngray-400/50 p-8" >
             <div className="text-center relative max-w-6xl mx-auto mt-auto">
               <h1 className="text-6xl md:text-8xl font-black text-gray-900 dark:text-white mb-6 tracking-tight leading-tight ">
-                <span className="flex">Bem vindo ao CrackoCraft</span>   
+                <span className="flex ">Bem vindo ao CrackoCraft</span>   
                 </h1>
                 <section className="mt-15 flex gap-4 justify-center">
                   <button className="px-5 py-2 text-base font-bold bg-[#FFA3EC] rounded border-none cursor-pointer transform duration-300 hover:scale-110 ">Baixar Modpack</button>
@@ -30,6 +30,11 @@ export default function Home() {
                 </section>
             </div>
           </div>
+
+
+          <div className="bg-white text-black dark:bg-black dark:text-white p-4">
+  Se isso mudar de cor, o dark mode tá funcionando.
+</div>
         </main>
 
       </div>

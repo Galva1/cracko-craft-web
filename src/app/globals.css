@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
-.day{
+.light{
   background-color: #FFCCF6;
 }
-.night{
+.dark{
   background-color: #9A0E79;
 }
 
