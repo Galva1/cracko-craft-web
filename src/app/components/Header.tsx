@@ -14,7 +14,7 @@ export function Header() {
   };
 
   return (
-<header className="w-full border-b-2 z-50 fixed bg-white dark:bg-green-400 text-gray-900 ">
+<header className= " w-full border-b-2 z-50 fixed  bg-(--color-primary) dark:bg-(--color-primary) text-gray-900 ">
       <div className="flex justify-between items-center px-4 py-2">
         {/* Logo */}
         <Link href="/" className="block">
@@ -76,12 +76,12 @@ export function Header() {
       </div>
 
       {/* Mobile Menu */}
-      <nav className={`${menubar ? "block" : "hidden"} md:hidden bg-white border-t border-gray-200 px-4`}> 
+      <nav className={`${menubar ? "block" : "hidden"} md:hidden bg-(--color-secondary) border-t border-gray-200 px-4`}> 
         <ul className="flex flex-col">
           <li>
             <Link
               href="#news"
-              className="block px-6 py-4 border-b border-gray-200 hover:bg-gray-100"
+              className="block px-6 py-4 border-b border-gray-300 hover:bg-gray-100 text-(--color-content)" 
             >
               News
             </Link>
@@ -89,7 +89,7 @@ export function Header() {
           <li>
             <Link
               href="#contact"
-              className="block px-6 py-4 border-b border-gray-200 hover:bg-gray-100"
+              className="block px-6 py-4 border-b border-gray-300 hover:bg-gray-100 text-(--color-content)"
             >
               Contact
             </Link>
@@ -97,7 +97,7 @@ export function Header() {
           <li>
             <Link
               href="#about"
-              className="block px-6 py-4 hover:bg-gray-100"
+              className="block px-6 py-4 hover:bg-gray-100 text-(--color-content)"
             >
               About
             </Link>
