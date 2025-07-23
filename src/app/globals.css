@@ -1,11 +1,34 @@
 @import "tailwindcss";
 
-.day{
-  background-color: #FFCCF6;
+
+
+      
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #ffa3ec;    /* Rosa vibrante principal */
+  --color-muted: #fce7f3;      /* Rosa bem claro, para bordas e fundos sutis */
+  --color-tertiary: #f9a8d4;   /* Rosa médio, bom para destaques */
+  --color-surface: #ffffff;    /* Branco puro para superfícies */
+  --color-accent: #fb6fbb;     /* Rosa mais saturado para elementos interativos */
+  --color-secondary: #ffe4f6;  /* Rosa bebê claro, para realces sutis */
+  --color-content: #3a1a2c;    /* Roxo escuro, legível e elegante */
+  --color-background: #fff7fc; /* Rosa bem pálido, quase branco, ideal como background */
 }
-.night{
-  background-color: #9A0E79;
+
+.dark {
+  --color-primary: #ff8cd5;    /* Rosa claro vibrante no dark mode */
+  --color-muted: #3a1a2c;      /* Roxo escuro como elemento neutro */
+  --color-tertiary: #f472b6;   /* Rosa forte, intermediário */
+  --color-surface: #1a0e1b;    /* Roxo quase preto, para superfícies escuras */
+  --color-accent: #ffa3ec;     /* Rosa principal reaproveitado para acentos */
+  --color-secondary: #4c1f37;  /* Vinho escuro com tom rosa, elegante */
+  --color-content: #fce7f3;    /* Rosa claro, bem legível sobre fundo escuro */
+  --color-background: #140e14; /* Fundo quase preto com leve tom roxo/rosado */
 }
+
+
 
 html, body {
   height: 100%;

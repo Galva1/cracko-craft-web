@@ -6,6 +6,11 @@ import { Footer } from "./components/Footer";
 import {  ThemeProvider } from "./api/provider/theme-provider";
 
 
+
+
+
+
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -19,6 +24,7 @@ export default function RootLayout({
         <Header />
         <main className="flex-grow flex flex-col">
           {children}
+          
         </main>
         <Footer />
         </ThemeProvider>
