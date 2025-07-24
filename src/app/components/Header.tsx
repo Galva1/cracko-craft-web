@@ -14,7 +14,7 @@ export function Header() {
   };
 
   return (
-<header className= " w-full border-b-2 z-50 fixed  bg-(--color-primary) dark:bg-(--color-primary) text-gray-900 ">
+<header className= " w-full border-b-2 z-50 fixed  bg-(--color-primary)  text-gray-900 ">
       <div className="flex justify-between items-center px-4 py-2">
         {/* Logo */}
         <Link href="/" className="block">
@@ -30,9 +30,9 @@ export function Header() {
           {/* Toggle theme */}
           <button
             onClick={toggleTheme}
-            className="text-2xl hover:text-orange-500"
+            className="text-2xl md:hover:text-orange-500"
           >
-            {theme === "dark" ? <FontAwesomeIcon icon={faSun} /> : <FontAwesomeIcon icon={faMoon} />}
+            {theme === "dark" ?  <FontAwesomeIcon icon={faMoon} /> : <FontAwesomeIcon icon={faSun} />}
           </button>
 
           {/* Desktop Menu */}
